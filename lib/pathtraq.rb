@@ -74,7 +74,7 @@ module Pathtraq
     PARAMS = [:m, :url]
   end
 
-  class PageCounter
+  module PageCounter
     URL = "http://api.pathtraq.com/page_counter"
     PARAMS = [:m, :url]
 
@@ -89,7 +89,7 @@ module Pathtraq
     end
   end
 
-  class PageChart
+  module PageChart
     URL = "http://api.pathtraq.com/page_chart"
     PARAMS = [:url, :scale]
 
