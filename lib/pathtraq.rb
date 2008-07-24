@@ -140,4 +140,3 @@ module Pathtraq
 end
 
 SimpleRSS.item_tags << :'pathtraq:hits'
-p Pathtraq::PageChart.url("http://slashdot.jp/")
