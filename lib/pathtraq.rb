@@ -123,18 +123,19 @@ module Pathtraq
     def initialize(url, params)
       @uri = URI(url)
       @params = params.map {|key, val| "#{key}=#{val}" }.join("&")
-      @uri.query = URI.escape(@params)
+      @uri.query = URI.escape(@params) if @params.size > 0
     end
 
     def send
       STDERR.puts "Pathtraq: request to #{@uri}" if $DEBUG
 
-      res = @uri.read
-      STDERR.puts "#{res.status.join(" ")} #{res.content_type}" if $DEBUG
-
-      # pathtraq return text/html when the query is invalid
-      raise Error.new(res, @params) if res.content_type == "text/html"
-      return res
+      begin
+        res = @uri.read
+        STDERR.puts "#{res.status.join(" ")} #{res.content_type}" if $DEBUG
+        return res
+      rescue OpenURI::HTTPError
+        raise Error.new(res, @params)
+      end
     end
   end
 end
