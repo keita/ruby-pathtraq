@@ -80,9 +80,9 @@ module Pathtraq
 
     def self.request(params)
       params[:api] = "json"
-      res = Request.new(URL, params)
-      if md = /counter:\s*(\d+)/.match(res)
-        md[1]
+      res = Request.new(URL, params).send
+      if md = /count:\s*(\d+)/.match(res)
+        md[1].to_i
       else
         raise Error.new(res, params)
       end
