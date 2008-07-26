@@ -44,7 +44,7 @@ module Pathtraq
     class << self
       GENRES.each do |genre|
         define_method(genre) do |*params|
-          params = params.first ||= Hash.new
+          params = (params.first || Hash.new)
           params[:genre] = genre
           request(params)
         end
@@ -61,7 +61,7 @@ module Pathtraq
     class << self
       CATEGORIES.each do |cat|
         define_method(cat) do |*params|
-          params = params.first ||= Hash.new
+          params = (params.first || Hash.new)
           params[:category] = cat
           request(params)
         end
