@@ -20,6 +20,7 @@ module Pathtraq
 
   class Feed < DelegateClass(Array)
     def self.request(params = {})
+      params ||= {}
       new(SimpleRSS.new(Request.new(self::URL, params).send))
     end
 
