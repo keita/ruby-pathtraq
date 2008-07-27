@@ -1,0 +1,52 @@
+= ruby-pathtraq
+
+Author::    Keita Yamaguchi(山口 慶太) <keita.yamaguchi@gmail.com>
+Copyright:: © Keita Yamaguchi, 2008. All rights reserved.
+License::   Ruby License
+
+ruby-pathtraq は Ruby から Pathtraq API を簡単に呼び出すためのライブラリです。
+
+== Install
+
+% sudo gem install pathtraq
+
+== Usage
+
+ここでは簡単な紹介だけを行ないますので、詳細は{API文書}[http://pathtraq.rubyforge.org/]をご覧下さい。なおURL正規化APIは現在未サポートです。必要な方がいっらしゃいましたらご連絡下さい。
+
+=== ニュースランキング取得API
+
+  NewsRanking.request(:m => :hot, :genre => :national)
+
+また各ジャンル名に対応するメソッドも用意しております。
+
+  NewsRanking.sports
+  NewsRanking.culture
+
+=== カテゴリランキング取得API
+
+  CategoryRanking.request(:m => :popular, :category => :politics)
+
+また各カテゴリ名に対応するメソッドも用意しております。
+
+  CategoryRanking.anime
+  CategoryRanking.art
+
+=== キーワード・URL検索API
+
+  KeywordSearch.request(:url => "http://d.hatena.ne.jp/keita_yamaguchi/")
+
+=== ページカウンタAPI
+
+  PageCounter.request(:url => "http://d.hatena.ne.jp/keita_yamaguchi/")
+
+=== ページチャートAPI
+
+  PageChart.request(:url => "http://d.hatena.ne.jp/keita_yamaguchi/")
+
+== Links
+
+* Pathtraq[http://pathtraq.com/]
+  * {開発者向け情報}[http://pathtraq.com/developer/]
+* 作者のブログ
+  * {¬¬日常日記}[http://d.hatena.ne.jp/keita_yamaguchi/]
