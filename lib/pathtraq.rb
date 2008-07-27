@@ -28,7 +28,7 @@ module Pathtraq
     attr_reader :link
 
     def initialize(data)
-      __setobj__([])
+      super([])
       data.channel.items.each do |i|
         self << Item.new(i)
       end
